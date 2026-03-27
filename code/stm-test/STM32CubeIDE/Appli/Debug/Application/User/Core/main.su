@@ -1,0 +1,12 @@
+/Users/davidbeloshavin/STM32Cube/Repository/STM32Cube_FW_N6_V1.3.0/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1165:22:LL_AHB3_GRP1_EnableClock	24	static
+/Users/davidbeloshavin/STM32Cube/Repository/STM32Cube_FW_N6_V1.3.0/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1407:22:LL_AHB4_GRP1_EnableClock	24	static
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/main.c:70:13:FillFramebuffer	24	static
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/main.c:86:5:main	8	static
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/main.c:138:6:PeriphCommonClock_Config	408	static
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/main.c:157:13:MX_LTDC_Init	64	static
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/main.c:219:15:SystemIsolation_Config	16	static
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/main.c:342:13:MX_USART1_UART_Init	8	static
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/main.c:390:13:MX_XSPI1_Init	24	static
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/main.c:441:13:MX_XSPI2_Init	24	static
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/main.c:492:13:MX_GPIO_Init	32	static
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/main.c:540:6:Error_Handler	4	static,ignoring_inline_asm

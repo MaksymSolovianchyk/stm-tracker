@@ -1,0 +1,14 @@
+/Users/davidbeloshavin/STM32Cube/Repository/STM32Cube_FW_N6_V1.3.0/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1407:22:LL_AHB4_GRP1_EnableClock	1
+/Users/davidbeloshavin/STM32Cube/Repository/STM32Cube_FW_N6_V1.3.0/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1755:22:LL_AHB5_GRP1_EnableClock	1
+/Users/davidbeloshavin/STM32Cube/Repository/STM32Cube_FW_N6_V1.3.0/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1891:22:LL_AHB5_GRP1_DisableClock	1
+/Users/davidbeloshavin/STM32Cube/Repository/STM32Cube_FW_N6_V1.3.0/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:2909:22:LL_APB2_GRP1_EnableClock	1
+/Users/davidbeloshavin/STM32Cube/Repository/STM32Cube_FW_N6_V1.3.0/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:2997:22:LL_APB2_GRP1_DisableClock	1
+/Users/davidbeloshavin/STM32Cube/Repository/STM32Cube_FW_N6_V1.3.0/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:3639:22:LL_APB5_GRP1_EnableClock	1
+/Users/davidbeloshavin/STM32Cube/Repository/STM32Cube_FW_N6_V1.3.0/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:3683:22:LL_APB5_GRP1_DisableClock	1
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/stm32n6xx_hal_msp.c:62:6:HAL_MspInit	1
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/stm32n6xx_hal_msp.c:90:6:HAL_LTDC_MspInit	3
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/stm32n6xx_hal_msp.c:209:6:HAL_LTDC_MspDeInit	2
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/stm32n6xx_hal_msp.c:277:6:HAL_UART_MspInit	3
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/stm32n6xx_hal_msp.c:325:6:HAL_UART_MspDeInit	2
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/stm32n6xx_hal_msp.c:356:6:HAL_XSPI_MspInit	7
+/Users/davidbeloshavin/STM32CubeIDE/workspace_2.1.1/stm-test/Appli/Core/Src/stm32n6xx_hal_msp.c:485:6:HAL_XSPI_MspDeInit	5
