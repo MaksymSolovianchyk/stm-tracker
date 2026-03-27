@@ -1,0 +1,14 @@
+D:/Skycomm/Tracker/stm-tracker/code/DCMIPP_ContinuousMode/FSBL/Src/main.c:84:5:main	10
+D:/Skycomm/Tracker/stm-tracker/code/DCMIPP_ContinuousMode/FSBL/Src/main.c:185:6:SystemClock_Config	8
+D:/Skycomm/Tracker/stm-tracker/code/DCMIPP_ContinuousMode/FSBL/Src/main.c:279:13:MX_DCMIPP_Init	12
+D:/Skycomm/Tracker/stm-tracker/code/DCMIPP_ContinuousMode/FSBL/Src/main.c:353:13:LCD_Init	3
+D:/Skycomm/Tracker/stm-tracker/code/DCMIPP_ContinuousMode/FSBL/Src/main.c:409:13:IMX335_Probe	6
+D:/Skycomm/Tracker/stm-tracker/code/DCMIPP_ContinuousMode/FSBL/Src/main.c:458:26:GetSensorInfoHelper	1
+D:/Skycomm/Tracker/stm-tracker/code/DCMIPP_ContinuousMode/FSBL/Src/main.c:468:26:SetSensorGainHelper	1
+D:/Skycomm/Tracker/stm-tracker/code/DCMIPP_ContinuousMode/FSBL/Src/main.c:479:26:GetSensorGainHelper	1
+D:/Skycomm/Tracker/stm-tracker/code/DCMIPP_ContinuousMode/FSBL/Src/main.c:490:26:SetSensorExposureHelper	1
+D:/Skycomm/Tracker/stm-tracker/code/DCMIPP_ContinuousMode/FSBL/Src/main.c:501:26:GetSensorExposureHelper	1
+D:/Skycomm/Tracker/stm-tracker/code/DCMIPP_ContinuousMode/FSBL/Src/main.c:508:6:HAL_DCMIPP_PIPE_FrameEventCallback	1
+D:/Skycomm/Tracker/stm-tracker/code/DCMIPP_ContinuousMode/FSBL/Src/main.c:519:6:HAL_DCMIPP_PIPE_VsyncEventCallback	5
+D:/Skycomm/Tracker/stm-tracker/code/DCMIPP_ContinuousMode/FSBL/Src/main.c:544:6:Error_Handler	1
+D:/Skycomm/Tracker/stm-tracker/code/DCMIPP_ContinuousMode/FSBL/Src/main.c:564:6:assert_failed	1
