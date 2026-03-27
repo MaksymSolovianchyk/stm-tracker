@@ -32,7 +32,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define RGB565_GREEN   0x07E0U
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -47,9 +47,10 @@ LTDC_HandleTypeDef hltdc;
 ISP_HandleTypeDef  hcamera_isp;
 /* USER CODE BEGIN PV */
 static __IO uint32_t NbMainFrames = 0;
-static IMX335_Object_t   IMX335Obj;
+static IMX335_Object_t IMX335Obj;
 static int32_t isp_gain;
 static int32_t isp_exposure;
+
 /* Calculate division factor for a given source and destination dimension (width or height) */
 #define DIV_FACTOR(SRC, DST) (((uint32_t)((1024 * DST) / SRC)) > 1023 ? 1023 : ((uint32_t)((1024 * DST) / SRC)))
 
@@ -70,6 +71,13 @@ static ISP_StatusTypeDef SetSensorGainHelper(uint32_t Instance, int32_t Gain);
 static ISP_StatusTypeDef GetSensorGainHelper(uint32_t Instance, int32_t *Gain);
 static ISP_StatusTypeDef SetSensorExposureHelper(uint32_t Instance, int32_t Exposure);
 static ISP_StatusTypeDef GetSensorExposureHelper(uint32_t Instance, int32_t *Exposure);
+
+static void CleanDCacheForBuffer(void);
+static void DrawPixelRGB565(uint32_t x, uint32_t y, uint16_t color);
+static void DrawFrameRGB565(uint32_t x, uint32_t y,
+                            uint32_t width, uint32_t height,
+                            uint32_t thickness, uint16_t color);
+static void DrawCenteredGreenFrame(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -83,7 +91,6 @@ static ISP_StatusTypeDef GetSensorExposureHelper(uint32_t Instance, int32_t *Exp
   */
 int main(void)
 {
-
   /* USER CODE BEGIN 1 */
   ISP_AppliHelpersTypeDef appliHelpers = {0};
   /* USER CODE END 1 */
@@ -109,7 +116,8 @@ int main(void)
   /* USER CODE BEGIN SysInit */
   BSP_LED_Init(LED_GREEN);
   BSP_LED_Init(LED_RED);
-    /* UART log */
+
+  /* UART log */
 #if USE_COM_LOG
   COM_InitTypeDef COM_Init;
 
@@ -139,19 +147,19 @@ int main(void)
   LCD_Init(FRAME_WIDTH, FRAME_HEIGHT);
 
   /* Fill init struct with Camera driver helpers */
-  appliHelpers.GetSensorInfo = GetSensorInfoHelper;
-  appliHelpers.SetSensorGain = SetSensorGainHelper;
-  appliHelpers.GetSensorGain = GetSensorGainHelper;
+  appliHelpers.GetSensorInfo     = GetSensorInfoHelper;
+  appliHelpers.SetSensorGain     = SetSensorGainHelper;
+  appliHelpers.GetSensorGain     = GetSensorGainHelper;
   appliHelpers.SetSensorExposure = SetSensorExposureHelper;
   appliHelpers.GetSensorExposure = GetSensorExposureHelper;
 
   /* Initialize the Image Signal Processing middleware */
-  if(ISP_Init(&hcamera_isp, &hdcmipp, 0, &appliHelpers, ISP_IQParamCacheInit[0]) != ISP_OK)
+  if (ISP_Init(&hcamera_isp, &hdcmipp, 0, &appliHelpers, ISP_IQParamCacheInit[0]) != ISP_OK)
   {
     Error_Handler();
   }
 
-  if (HAL_DCMIPP_CSI_PIPE_Start(&hdcmipp, DCMIPP_PIPE1, DCMIPP_VIRTUAL_CHANNEL0 , BUFFER_ADDRESS, DCMIPP_MODE_CONTINUOUS) != HAL_OK)
+  if (HAL_DCMIPP_CSI_PIPE_Start(&hdcmipp, DCMIPP_PIPE1, DCMIPP_VIRTUAL_CHANNEL0, BUFFER_ADDRESS, DCMIPP_MODE_CONTINUOUS) != HAL_OK)
   {
     Error_Handler();
   }
@@ -168,11 +176,14 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+
     BSP_LED_Toggle(LED_GREEN);
+
     if (ISP_BackgroundProcess(&hcamera_isp) != ISP_OK)
     {
       BSP_LED_Toggle(LED_RED);
     }
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -193,8 +204,7 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 
-  /** Enable HSI
-  */
+  /** Enable HSI */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSIDiv = RCC_HSI_DIV1;
@@ -203,19 +213,19 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL2.PLLState = RCC_PLL_NONE;
   RCC_OscInitStruct.PLL3.PLLState = RCC_PLL_NONE;
   RCC_OscInitStruct.PLL4.PLLState = RCC_PLL_NONE;
-  if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
   }
 
   /** Get current CPU/System buses clocks configuration and
- if necessary switch to intermediate HSI clock to ensure target clock can be set
+    if necessary switch to intermediate HSI clock to ensure target clock can be set
   */
   HAL_RCC_GetClockConfig(&RCC_ClkInitStruct);
-  if((RCC_ClkInitStruct.CPUCLKSource == RCC_CPUCLKSOURCE_IC1) ||
-     (RCC_ClkInitStruct.SYSCLKSource == RCC_SYSCLKSOURCE_IC2_IC6_IC11))
+  if ((RCC_ClkInitStruct.CPUCLKSource == RCC_CPUCLKSOURCE_IC1) ||
+      (RCC_ClkInitStruct.SYSCLKSource == RCC_SYSCLKSOURCE_IC2_IC6_IC11))
   {
-    RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_CPUCLK|RCC_CLOCKTYPE_SYSCLK);
+    RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_CPUCLK | RCC_CLOCKTYPE_SYSCLK);
     RCC_ClkInitStruct.CPUCLKSource = RCC_CPUCLKSOURCE_HSI;
     RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
     if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct) != HAL_OK)
@@ -225,7 +235,7 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
+    in the RCC_OscInitTypeDef structure.
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_NONE;
   RCC_OscInitStruct.PLL1.PLLState = RCC_PLL_ON;
@@ -243,12 +253,11 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 
-  /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_CPUCLK|RCC_CLOCKTYPE_HCLK
-                              |RCC_CLOCKTYPE_SYSCLK|RCC_CLOCKTYPE_PCLK1
-                              |RCC_CLOCKTYPE_PCLK2|RCC_CLOCKTYPE_PCLK5
-                              |RCC_CLOCKTYPE_PCLK4;
+  /** Initializes the CPU, AHB and APB buses clocks */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_CPUCLK | RCC_CLOCKTYPE_HCLK
+                              | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1
+                              | RCC_CLOCKTYPE_PCLK2 | RCC_CLOCKTYPE_PCLK5
+                              | RCC_CLOCKTYPE_PCLK4;
   RCC_ClkInitStruct.CPUCLKSource = RCC_CPUCLKSOURCE_IC1;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_IC2_IC6_IC11;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV2;
@@ -283,7 +292,7 @@ static void MX_DCMIPP_Init(void)
   DCMIPP_PipeConfTypeDef pPipeConf = {0};
   DCMIPP_CSI_PIPE_ConfTypeDef pCSIPipeConf = {0};
   DCMIPP_CSI_ConfTypeDef csiconf = {0};
-  DCMIPP_DownsizeTypeDef DonwsizeConf ={0};
+  DCMIPP_DownsizeTypeDef DonwsizeConf = {0};
 
   /* Set DCMIPP instance */
   hdcmipp.Instance = DCMIPP;
@@ -296,13 +305,13 @@ static void MX_DCMIPP_Init(void)
   csiconf.DataLaneMapping = DCMIPP_CSI_PHYSICAL_DATA_LANES;
   csiconf.NumberOfLanes   = DCMIPP_CSI_TWO_DATA_LANES;
   csiconf.PHYBitrate      = DCMIPP_CSI_PHY_BT_1600;
-  if(HAL_DCMIPP_CSI_SetConfig(&hdcmipp, &csiconf) != HAL_OK)
+  if (HAL_DCMIPP_CSI_SetConfig(&hdcmipp, &csiconf) != HAL_OK)
   {
     Error_Handler();
   }
+
   /* Configure the Virtual Channel 0 */
-  /* Set Virtual Channel config */
-  if(HAL_DCMIPP_CSI_SetVCConfig(&hdcmipp, DCMIPP_VIRTUAL_CHANNEL0, DCMIPP_CSI_DT_BPP10) != HAL_OK)
+  if (HAL_DCMIPP_CSI_SetVCConfig(&hdcmipp, DCMIPP_VIRTUAL_CHANNEL0, DCMIPP_CSI_DT_BPP10) != HAL_OK)
   {
     Error_Handler();
   }
@@ -312,17 +321,16 @@ static void MX_DCMIPP_Init(void)
   pCSIPipeConf.DataTypeIDA  = DCMIPP_DT_RAW10;
   pCSIPipeConf.DataTypeIDB  = DCMIPP_DT_RAW10; /* Don't Care */
 
-
   if (HAL_DCMIPP_CSI_PIPE_SetConfig(&hdcmipp, DCMIPP_PIPE1, &pCSIPipeConf) != HAL_OK)
   {
     Error_Handler();
   }
 
-  pPipeConf.FrameRate  = DCMIPP_FRAME_RATE_ALL;
+  pPipeConf.FrameRate = DCMIPP_FRAME_RATE_ALL;
   pPipeConf.PixelPackerFormat = DCMIPP_PIXEL_PACKER_FORMAT_RGB565_1;
 
   /* Set Pitch for Main and Ancillary Pipes */
-  pPipeConf.PixelPipePitch  = 1600 ; /* Number of bytes */
+  pPipeConf.PixelPipePitch = 1600; /* Number of bytes */
 
   /* Configure Pipe */
   if (HAL_DCMIPP_PIPE_SetConfig(&hdcmipp, DCMIPP_PIPE1, &pPipeConf) != HAL_OK)
@@ -338,25 +346,25 @@ static void MX_DCMIPP_Init(void)
   DonwsizeConf.HDivFactor  = DIV_FACTOR(IMX335_WIDTH, DonwsizeConf.HSize);
   DonwsizeConf.VDivFactor  = DIV_FACTOR(IMX335_HEIGHT, DonwsizeConf.VSize);
 
-  if(HAL_DCMIPP_PIPE_SetDownsizeConfig(&hdcmipp, DCMIPP_PIPE1, &DonwsizeConf) != HAL_OK)
+  if (HAL_DCMIPP_PIPE_SetDownsizeConfig(&hdcmipp, DCMIPP_PIPE1, &DonwsizeConf) != HAL_OK)
   {
     Error_Handler();
   }
-  if(HAL_DCMIPP_PIPE_EnableDownsize(&hdcmipp, DCMIPP_PIPE1) != HAL_OK)
+  if (HAL_DCMIPP_PIPE_EnableDownsize(&hdcmipp, DCMIPP_PIPE1) != HAL_OK)
   {
     Error_Handler();
   }
+
   /* USER CODE BEGIN DCMIPP_Init 2 */
   /* USER CODE END DCMIPP_Init 2 */
 }
 
 static void LCD_Init(uint32_t Width, uint32_t Height)
 {
-  LTDC_LayerCfgTypeDef pLayerCfg ={0};
+  LTDC_LayerCfgTypeDef pLayerCfg = {0};
 
   hltdc.Instance = LTDC;
 
-  hltdc.Instance = LTDC;
   hltdc.Init.HSPolarity = LTDC_HSPOLARITY_AL;
   hltdc.Init.VSPolarity = LTDC_VSPOLARITY_AL;
   hltdc.Init.DEPolarity = LTDC_DEPOLARITY_AL;
@@ -364,28 +372,28 @@ static void LCD_Init(uint32_t Width, uint32_t Height)
 
   hltdc.Init.HorizontalSync     = RK050HR18_HSYNC - 1;
   hltdc.Init.AccumulatedHBP     = RK050HR18_HSYNC + RK050HR18_HBP - 1;
-  hltdc.Init.AccumulatedActiveW = RK050HR18_HSYNC + Width + RK050HR18_HBP -1;
+  hltdc.Init.AccumulatedActiveW = RK050HR18_HSYNC + Width + RK050HR18_HBP - 1;
   hltdc.Init.TotalWidth         = RK050HR18_HSYNC + Width + RK050HR18_HBP + RK050HR18_HFP - 1;
   hltdc.Init.VerticalSync       = RK050HR18_VSYNC - 1;
   hltdc.Init.AccumulatedVBP     = RK050HR18_VSYNC + RK050HR18_VBP - 1;
-  hltdc.Init.AccumulatedActiveH = RK050HR18_VSYNC + Height + RK050HR18_VBP -1 ;
+  hltdc.Init.AccumulatedActiveH = RK050HR18_VSYNC + Height + RK050HR18_VBP - 1;
   hltdc.Init.TotalHeigh         = RK050HR18_VSYNC + Height + RK050HR18_VBP + RK050HR18_VFP - 1;
 
   hltdc.Init.Backcolor.Blue  = 0x0;
   hltdc.Init.Backcolor.Green = 0xFF;
   hltdc.Init.Backcolor.Red   = 0x0;
 
-  if(HAL_LTDC_Init(&hltdc) != HAL_OK)
+  if (HAL_LTDC_Init(&hltdc) != HAL_OK)
   {
     Error_Handler();
   }
 
-  pLayerCfg.WindowX0       = 0;
-  pLayerCfg.WindowX1       = Width;
-  pLayerCfg.WindowY0       = 0;
-  pLayerCfg.WindowY1       = Height;
-  pLayerCfg.PixelFormat    = LTDC_PIXEL_FORMAT_RGB565;
-  pLayerCfg.FBStartAdress  = BUFFER_ADDRESS;
+  pLayerCfg.WindowX0 = 0;
+  pLayerCfg.WindowX1 = Width;
+  pLayerCfg.WindowY0 = 0;
+  pLayerCfg.WindowY1 = Height;
+  pLayerCfg.PixelFormat = LTDC_PIXEL_FORMAT_RGB565;
+  pLayerCfg.FBStartAdress = BUFFER_ADDRESS;
   pLayerCfg.Alpha = LTDC_LxCACR_CONSTA;
   pLayerCfg.Alpha0 = 0;
   pLayerCfg.BlendingFactor1 = LTDC_BLENDING_FACTOR1_PAxCA;
@@ -395,7 +403,8 @@ static void LCD_Init(uint32_t Width, uint32_t Height)
   pLayerCfg.Backcolor.Blue = 0;
   pLayerCfg.Backcolor.Green = 0;
   pLayerCfg.Backcolor.Red = 0;
-  if(HAL_LTDC_ConfigLayer(&hltdc, &pLayerCfg, LTDC_LAYER_1))
+
+  if (HAL_LTDC_ConfigLayer(&hltdc, &pLayerCfg, LTDC_LAYER_1) != HAL_OK)
   {
     Error_Handler();
   }
@@ -408,16 +417,16 @@ static void LCD_Init(uint32_t Width, uint32_t Height)
   */
 static void IMX335_Probe(uint32_t Resolution, uint32_t PixelFormat)
 {
-  IMX335_IO_t              IOCtx;
-  uint32_t                 id;
+  IMX335_IO_t IOCtx;
+  uint32_t id;
 
   /* Configure the camera driver */
-  IOCtx.Address     = CAMERA_IMX335_ADDRESS;
-  IOCtx.Init        = BSP_I2C1_Init;
-  IOCtx.DeInit      = BSP_I2C1_DeInit;
-  IOCtx.ReadReg     = BSP_I2C1_ReadReg16;
-  IOCtx.WriteReg    = BSP_I2C1_WriteReg16;
-  IOCtx.GetTick     = BSP_GetTick;
+  IOCtx.Address  = CAMERA_IMX335_ADDRESS;
+  IOCtx.Init     = BSP_I2C1_Init;
+  IOCtx.DeInit   = BSP_I2C1_DeInit;
+  IOCtx.ReadReg  = BSP_I2C1_ReadReg16;
+  IOCtx.WriteReg = BSP_I2C1_WriteReg16;
+  IOCtx.GetTick  = BSP_GetTick;
 
   if (IMX335_RegisterBusIO(&IMX335Obj, &IOCtx) != IMX335_OK)
   {
@@ -429,7 +438,7 @@ static void IMX335_Probe(uint32_t Resolution, uint32_t PixelFormat)
   }
   else
   {
-    if (id != (uint32_t) IMX335_CHIP_ID)
+    if (id != (uint32_t)IMX335_CHIP_ID)
     {
       Error_Handler();
     }
@@ -439,7 +448,7 @@ static void IMX335_Probe(uint32_t Resolution, uint32_t PixelFormat)
       {
         Error_Handler();
       }
-      else if(IMX335_SetFrequency(&IMX335Obj, IMX335_INCK_24MHZ)!= IMX335_OK)
+      else if (IMX335_SetFrequency(&IMX335Obj, IMX335_INCK_24MHZ) != IMX335_OK)
       {
         Error_Handler();
       }
@@ -458,7 +467,7 @@ static void IMX335_Probe(uint32_t Resolution, uint32_t PixelFormat)
 static ISP_StatusTypeDef GetSensorInfoHelper(uint32_t Instance, ISP_SensorInfoTypeDef *SensorInfo)
 {
   UNUSED(Instance);
-  return (ISP_StatusTypeDef) IMX335_GetSensorInfo(&IMX335Obj, (IMX335_SensorInfo_t *) SensorInfo);
+  return (ISP_StatusTypeDef)IMX335_GetSensorInfo(&IMX335Obj, (IMX335_SensorInfo_t *)SensorInfo);
 }
 
 /**
@@ -469,7 +478,7 @@ static ISP_StatusTypeDef SetSensorGainHelper(uint32_t Instance, int32_t Gain)
 {
   UNUSED(Instance);
   isp_gain = Gain;
-  return (ISP_StatusTypeDef) IMX335_SetGain(&IMX335Obj, Gain);
+  return (ISP_StatusTypeDef)IMX335_SetGain(&IMX335Obj, Gain);
 }
 
 /**
@@ -491,7 +500,7 @@ static ISP_StatusTypeDef SetSensorExposureHelper(uint32_t Instance, int32_t Expo
 {
   UNUSED(Instance);
   isp_exposure = Exposure;
-  return (ISP_StatusTypeDef) IMX335_SetExposure(&IMX335Obj, Exposure);
+  return (ISP_StatusTypeDef)IMX335_SetExposure(&IMX335Obj, Exposure);
 }
 
 /**
@@ -505,9 +514,94 @@ static ISP_StatusTypeDef GetSensorExposureHelper(uint32_t Instance, int32_t *Exp
   return ISP_OK;
 }
 
+static void CleanDCacheForBuffer(void)
+{
+  uint32_t addr = BUFFER_ADDRESS & ~((uint32_t)31U);
+  uint32_t size = (FRAME_WIDTH * FRAME_HEIGHT * 2U) + (BUFFER_ADDRESS - addr);
+
+  /* round size up to 32-byte boundary */
+  size = (size + 31U) & ~((uint32_t)31U);
+
+  SCB_CleanDCache_by_Addr((uint32_t *)addr, (int32_t)size);
+}
+
+static void DrawPixelRGB565(uint32_t x, uint32_t y, uint16_t color)
+{
+  if ((x < FRAME_WIDTH) && (y < FRAME_HEIGHT))
+  {
+    uint16_t *fb = (uint16_t *)BUFFER_ADDRESS;
+    fb[(y * FRAME_WIDTH) + x] = color;
+  }
+}
+
+static void DrawFrameRGB565(uint32_t x, uint32_t y,
+                            uint32_t width, uint32_t height,
+                            uint32_t thickness, uint16_t color)
+{
+  uint32_t i, j;
+
+  if ((width == 0U) || (height == 0U) || (thickness == 0U))
+  {
+    return;
+  }
+
+  if (thickness > (width / 2U))
+  {
+    thickness = width / 2U;
+  }
+
+  if (thickness > (height / 2U))
+  {
+    thickness = height / 2U;
+  }
+
+  /* Top + Bottom */
+  for (j = 0; j < thickness; j++)
+  {
+    for (i = 0; i < width; i++)
+    {
+      DrawPixelRGB565(x + i, y + j, color);
+      DrawPixelRGB565(x + i, y + height - 1U - j, color);
+    }
+  }
+
+  /* Left + Right */
+  for (j = thickness; j < (height - thickness); j++)
+  {
+    for (i = 0; i < thickness; i++)
+    {
+      DrawPixelRGB565(x + i, y + j, color);
+      DrawPixelRGB565(x + width - 1U - i, y + j, color);
+    }
+  }
+}
+
+static void DrawCenteredGreenFrame(void)
+{
+  const uint32_t frame_w   = 100U;
+  const uint32_t frame_h   = 100U;
+  const uint32_t thickness = 20U;
+
+  const uint32_t x = (FRAME_WIDTH  - frame_w) / 2U;
+  const uint32_t y = (FRAME_HEIGHT - frame_h) / 2U;
+
+  DrawFrameRGB565(x, y, frame_w, frame_h, thickness, RGB565_GREEN);
+}
+
 void HAL_DCMIPP_PIPE_FrameEventCallback(DCMIPP_HandleTypeDef *hdcmipp, uint32_t Pipe)
 {
-  NbMainFrames++;
+  UNUSED(hdcmipp);
+
+  if (Pipe == DCMIPP_PIPE1)
+  {
+    NbMainFrames++;
+
+    /* Draw after the frame write is completed */
+    DrawCenteredGreenFrame();
+
+    /* Push CPU writes from D-cache to memory so LTDC sees them */
+    CleanDCacheForBuffer();
+  }
 }
 
 /**
@@ -519,22 +613,27 @@ void HAL_DCMIPP_PIPE_FrameEventCallback(DCMIPP_HandleTypeDef *hdcmipp, uint32_t 
 void HAL_DCMIPP_PIPE_VsyncEventCallback(DCMIPP_HandleTypeDef *hdcmipp, uint32_t Pipe)
 {
   UNUSED(hdcmipp);
+
   /* Update the frame counter and call the ISP statistics handler */
   switch (Pipe)
   {
-    case DCMIPP_PIPE0 :
+    case DCMIPP_PIPE0:
       ISP_IncDumpFrameId(&hcamera_isp);
       break;
-    case DCMIPP_PIPE1 :
+
+    case DCMIPP_PIPE1:
       ISP_IncMainFrameId(&hcamera_isp);
       ISP_GatherStatistics(&hcamera_isp);
       break;
-    case DCMIPP_PIPE2 :
+
+    case DCMIPP_PIPE2:
       ISP_IncAncillaryFrameId(&hcamera_isp);
+      break;
+
+    default:
       break;
   }
 }
-
 /* USER CODE END 4 */
 
 /**
@@ -553,7 +652,7 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
   *         where the assert_param error has occurred.
