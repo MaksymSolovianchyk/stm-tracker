@@ -1,7 +1,7 @@
 Middlewares/stm32-mw-camera/cmw_camera.o: \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_camera.c \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_camera.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_errno.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_camera.c \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_camera.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_errno.h \
  ../../Inc/cmw_camera_conf.h \
  ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h \
  ../../Inc/stm32n6xx_hal_conf.h \
@@ -51,8 +51,8 @@ Middlewares/stm32-mw-camera/cmw_camera.o: \
  ../../../../Middlewares/stm32-mw-camera/ISP_Library/isp/Inc/isp_platform.h \
  ../../../../Middlewares/stm32-mw-camera/ISP_Library/isp/Inc/isp_api.h \
  ../../../../Middlewares/stm32-mw-camera/ISP_Library/isp/Inc/isp_core.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_utils.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_io.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_utils.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_io.h \
  ../../../../Middlewares/stm32-mw-camera/sensors/cmw_vd55g1.h \
  ../../../../Middlewares/stm32-mw-camera/sensors/cmw_sensors_if.h \
  ../../../../Middlewares/stm32-mw-camera/cmw_errno.h \
@@ -69,8 +69,8 @@ Middlewares/stm32-mw-camera/cmw_camera.o: \
  ../../../../Middlewares/stm32-mw-camera/sensors/vd6g/vd6g.h \
  ../../../../Middlewares/stm32-mw-camera/sensors/cmw_vd1943.h \
  ../../../../Middlewares/stm32-mw-camera/sensors/vd1943/vd1943.h
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_camera.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_errno.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_camera.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_errno.h:
 ../../Inc/cmw_camera_conf.h:
 ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h:
 ../../Inc/stm32n6xx_hal_conf.h:
@@ -120,8 +120,8 @@ Middlewares/stm32-mw-camera/cmw_camera.o: \
 ../../../../Middlewares/stm32-mw-camera/ISP_Library/isp/Inc/isp_platform.h:
 ../../../../Middlewares/stm32-mw-camera/ISP_Library/isp/Inc/isp_api.h:
 ../../../../Middlewares/stm32-mw-camera/ISP_Library/isp/Inc/isp_core.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_utils.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_io.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_utils.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_io.h:
 ../../../../Middlewares/stm32-mw-camera/sensors/cmw_vd55g1.h:
 ../../../../Middlewares/stm32-mw-camera/sensors/cmw_sensors_if.h:
 ../../../../Middlewares/stm32-mw-camera/cmw_errno.h:

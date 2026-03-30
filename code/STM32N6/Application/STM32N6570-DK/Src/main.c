@@ -1,4 +1,4 @@
- /**
+/**
  ******************************************************************************
  * @file    main.c
  * @author  GPM Application Team
@@ -17,6 +17,7 @@
  */
 #include <string.h>
 #include <unistd.h>
+#include <math.h>
 
 #include "cmw_camera.h"
 #include "stm32n6570_discovery_bus.h"
@@ -38,9 +39,16 @@
 
 CLASSES_TABLE;
 
-#define LCD_FG_WIDTH  SCREEN_WIDTH
-#define LCD_FG_HEIGHT SCREEN_HEIGHT
+#define LCD_FG_WIDTH             SCREEN_WIDTH
+#define LCD_FG_HEIGHT            SCREEN_HEIGHT
 #define LCD_FG_FRAMEBUFFER_SIZE  (LCD_FG_WIDTH * LCD_FG_HEIGHT * 2)
+
+/* Fixed-size tracking box — change these to adjust size */
+#define FIXED_BOX_W        100
+#define FIXED_BOX_H        100
+#define DOT_RADIUS         12
+#define DOT_COLOR          UTIL_LCD_COLOR_RED
+#define ZONE_BORDER_THICK  4
 
 #ifndef APP_GIT_SHA1_STRING
 #define APP_GIT_SHA1_STRING "dev"
@@ -142,6 +150,7 @@ __attribute__ ((aligned (32)))
 static uint8_t lcd_fg_buffer[2][LCD_FG_WIDTH * LCD_FG_HEIGHT * 2];
 static int lcd_fg_buffer_rd_idx;
 
+/* Forward declarations */
 static void SystemClock_Config(void);
 static void CONSOLE_Config(void);
 static void NPURam_enable(void);
@@ -155,6 +164,8 @@ static void Display_WelcomeScreen(void);
 static void Hardware_init(void);
 static void Run_Inference(stai_network *network_instance);
 static void NeuralNetwork_init(uint32_t *nn_in_length, stai_ptr *nn_out, stai_size *number_output, int32_t nn_out_len[]);
+static void DrawThickRect(uint32_t x, uint32_t y, uint32_t w, uint32_t h, uint32_t color, uint32_t thickness);
+static void DrawFilledCircle(uint32_t cx, uint32_t cy, uint32_t radius, uint32_t color);
 
 
 /**
@@ -170,7 +181,7 @@ int main(void)
   printf("========================================\n");
   printf("STM32N6-GettingStarted-ObjectDetection %s (%s)\n", APP_VERSION_STRING, APP_GIT_SHA1_STRING);
   printf("Build date & time: %s %s\n", __DATE__, __TIME__);
-  #if defined(__GNUC__)
+#if defined(__GNUC__)
   printf("Compiler: GCC %d.%d.%d\n", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
 #elif defined(__ICCARM__)
   printf("Compiler: IAR EWARM %d.%d.%d\n", __VER__ / 1000000, (__VER__ / 1000) % 1000 ,__VER__ % 1000);
@@ -231,11 +242,11 @@ int main(void)
     if (pitch_nn != (STAI_NETWORK_IN_1_WIDTH * STAI_NETWORK_IN_1_CHANNEL))
     {
       SCB_InvalidateDCache_by_Addr(dcmipp_out_nn, sizeof(dcmipp_out_nn));
-    /*
-     * Crop the image if the neural network (NN) input dimensions are not a multiple of 16.
-     * The DCMIPP hardware requires the output image dimensions to be multiples of 16.
-     * This ensures compatibility with the NN input dimensions.
-     */
+      /*
+       * Crop the image if the neural network (NN) input dimensions are not a multiple of 16.
+       * The DCMIPP hardware requires the output image dimensions to be multiples of 16.
+       * This ensures compatibility with the NN input dimensions.
+       */
       img_crop(dcmipp_out_nn, nn_in, pitch_nn, STAI_NETWORK_IN_1_WIDTH, STAI_NETWORK_IN_1_HEIGHT, STAI_NETWORK_IN_1_CHANNEL);
       SCB_CleanInvalidateDCache_by_Addr(nn_in, nn_in_len);
     }
@@ -248,8 +259,10 @@ int main(void)
     int32_t ret = app_postprocess_run((void **) nn_out, number_output, &pp_output, &pp_params);
     assert(ret == 0);
 
+    /* Display results with fixed-size tracking box */
     Display_NetworkOutput(&pp_output, ts[1] - ts[0]);
-    /* Discard nn_out region (used by pp_input and pp_outputs variables) to avoid Dcache evictions during nn inference */
+
+    /* Discard nn_out region to avoid Dcache evictions during nn inference */
     for (int i = 0; i < number_output; i++)
     {
       void *tmp = nn_out[i];
@@ -303,10 +316,10 @@ static void Hardware_init(void)
 
   IAC_Config();
   set_clk_sleep_mode();
-
 }
 
-static void Run_Inference(stai_network *network_instance) {
+static void Run_Inference(stai_network *network_instance)
+{
   stai_return_code ret;
 
   do {
@@ -376,18 +389,14 @@ static void NPURam_enable(void)
 static void set_clk_sleep_mode(void)
 {
   /*** Enable sleep mode support during NPU inference *************************/
-  /* Configure peripheral clocks to remain active during sleep mode */
-  /* Keep all IP's enabled during WFE so they can wake up CPU. Fine tune
-   * this if you want to save maximum power
-   */
-  __HAL_RCC_XSPI1_CLK_SLEEP_ENABLE();    /* For display frame buffer */
-  __HAL_RCC_XSPI2_CLK_SLEEP_ENABLE();    /* For NN weights */
-  __HAL_RCC_NPU_CLK_SLEEP_ENABLE();      /* For NN inference */
-  __HAL_RCC_CACHEAXI_CLK_SLEEP_ENABLE(); /* For NN inference */
-  __HAL_RCC_LTDC_CLK_SLEEP_ENABLE();     /* For display */
-  __HAL_RCC_DMA2D_CLK_SLEEP_ENABLE();    /* For display */
-  __HAL_RCC_DCMIPP_CLK_SLEEP_ENABLE();   /* For camera configuration retention */
-  __HAL_RCC_CSI_CLK_SLEEP_ENABLE();      /* For camera configuration retention */
+  __HAL_RCC_XSPI1_CLK_SLEEP_ENABLE();
+  __HAL_RCC_XSPI2_CLK_SLEEP_ENABLE();
+  __HAL_RCC_NPU_CLK_SLEEP_ENABLE();
+  __HAL_RCC_CACHEAXI_CLK_SLEEP_ENABLE();
+  __HAL_RCC_LTDC_CLK_SLEEP_ENABLE();
+  __HAL_RCC_DMA2D_CLK_SLEEP_ENABLE();
+  __HAL_RCC_DCMIPP_CLK_SLEEP_ENABLE();
+  __HAL_RCC_CSI_CLK_SLEEP_ENABLE();
 
   __HAL_RCC_FLEXRAM_MEM_CLK_SLEEP_ENABLE();
   __HAL_RCC_AXISRAM1_MEM_CLK_SLEEP_ENABLE();
@@ -395,8 +404,7 @@ static void set_clk_sleep_mode(void)
   __HAL_RCC_AXISRAM3_MEM_CLK_SLEEP_ENABLE();
   __HAL_RCC_AXISRAM4_MEM_CLK_SLEEP_ENABLE();
   __HAL_RCC_AXISRAM5_MEM_CLK_SLEEP_ENABLE();
-  __HAL_RCC_AXISRAM6_MEM_CLK_SLEEP_ENABLE(); 
-
+  __HAL_RCC_AXISRAM6_MEM_CLK_SLEEP_ENABLE();
 }
 
 static void NPUCache_config(void)
@@ -426,7 +434,6 @@ static void Security_Config(void)
 
 static void IAC_Config(void)
 {
-/* Configure IAC to trap illegal access events */
   __HAL_RCC_IAC_CLK_ENABLE();
   __HAL_RCC_IAC_FORCE_RESET();
   __HAL_RCC_IAC_RELEASE_RESET();
@@ -440,41 +447,126 @@ void IAC_IRQHandler(void)
 }
 
 /**
-* @brief Display Neural Network output classification results as well as other performances informations
-*
-* @param p_postprocess pointer to postprocessing output
-* @param inference_ms inference time in ms
-*/
+ * @brief Draw a rectangle with a given border thickness
+ *
+ * @param x       top-left X position in pixels
+ * @param y       top-left Y position in pixels
+ * @param w       width in pixels
+ * @param h       height in pixels
+ * @param color   ARGB color
+ * @param thickness  border thickness in pixels
+ */
+static void DrawThickRect(uint32_t x, uint32_t y,
+                           uint32_t w, uint32_t h,
+                           uint32_t color, uint32_t thickness)
+{
+  for (uint32_t t = 0; t < thickness; t++)
+  {
+    /* Each iteration draws a slightly smaller rectangle inside the previous.
+     * Safety check ensures the rectangle does not collapse inward. */
+    if ((w > 2*t) && (h > 2*t))
+    {
+      UTIL_LCD_DrawRect(x + t, y + t, w - 2*t, h - 2*t, color);
+    }
+  }
+}
+
+/**
+ * @brief Draw a filled circle
+ *
+ * @param cx      center X in pixels
+ * @param cy      center Y in pixels
+ * @param radius  radius in pixels
+ * @param color   ARGB color
+ */
+static void DrawFilledCircle(uint32_t cx, uint32_t cy,
+                              uint32_t radius, uint32_t color)
+{
+  int32_t r = (int32_t)radius;
+
+  for (int32_t dy = -r; dy <= r; dy++)
+  {
+    /* For each row, compute horizontal span using Pythagoras:
+     * x² + y² = r²  →  x = sqrt(r² - y²) */
+    int32_t dx = (int32_t)sqrtf((float32_t)(r*r - dy*dy));
+
+    int32_t x0 = (int32_t)cx - dx;
+    int32_t y0 = (int32_t)cy + dy;
+
+    /* Clamp to screen boundaries */
+    if (x0 < 0) x0 = 0;
+    if (y0 < 0 || y0 >= (int32_t)SCREEN_HEIGHT) continue;
+    if ((x0 + 2*dx) > (int32_t)SCREEN_WIDTH)
+      dx = (int32_t)SCREEN_WIDTH - x0;
+
+    /* Draw one horizontal line across the circle at this row */
+    UTIL_LCD_DrawHLine((uint32_t)x0, (uint32_t)y0, (uint32_t)(2*dx), color);
+  }
+}
+
+/**
+ * @brief Display Neural Network output with a fixed-size tracking rectangle.
+ *        The rectangle follows the detected person but never changes size.
+ *
+ * @param p_postprocess  pointer to postprocessing output
+ * @param inference_ms   inference time in ms
+ */
 static void Display_NetworkOutput(od_pp_out_t *p_postprocess, uint32_t inference_ms)
 {
-
   od_pp_outBuffer_t *rois = p_postprocess->pOutBuff;
   uint32_t nb_rois = p_postprocess->nb_detect;
   int ret;
+  int person_found = 0;
 
-  ret = HAL_LTDC_SetAddress_NoReload(&hlcd_ltdc, (uint32_t) lcd_fg_buffer[lcd_fg_buffer_rd_idx], LTDC_LAYER_2);
+  ret = HAL_LTDC_SetAddress_NoReload(&hlcd_ltdc,
+          (uint32_t) lcd_fg_buffer[lcd_fg_buffer_rd_idx], LTDC_LAYER_2);
   assert(ret == HAL_OK);
 
-  /* Draw bounding boxes */
-  UTIL_LCD_FillRect(lcd_fg_area.X0, lcd_fg_area.Y0, lcd_fg_area.XSize, lcd_fg_area.YSize, 0x00000000); /* Clear previous boxes */
+  /* Clear previous frame overlay */
+  UTIL_LCD_FillRect(lcd_fg_area.X0, lcd_fg_area.Y0,
+                    lcd_fg_area.XSize, lcd_fg_area.YSize, 0x00000000);
+
   for (int32_t i = 0; i < nb_rois; i++)
   {
-    uint32_t x0 = (uint32_t) ((rois[i].x_center - rois[i].width / 2) * ((float32_t) lcd_bg_area.XSize)) + lcd_bg_area.X0;
-    uint32_t y0 = (uint32_t) ((rois[i].y_center - rois[i].height / 2) * ((float32_t) lcd_bg_area.YSize));
-    uint32_t width = (uint32_t) (rois[i].width * ((float32_t) lcd_bg_area.XSize));
-    uint32_t height = (uint32_t) (rois[i].height * ((float32_t) lcd_bg_area.YSize));
-    /* Draw boxes without going outside of the image to avoid clearing the text area to clear the boxes */
-    x0 = x0 < lcd_bg_area.X0 + lcd_bg_area.XSize ? x0 : lcd_bg_area.X0 + lcd_bg_area.XSize - 1;
-    y0 = y0 < lcd_bg_area.Y0 + lcd_bg_area.YSize ? y0 : lcd_bg_area.Y0 + lcd_bg_area.YSize  - 1;
-    width = ((x0 + width) < lcd_bg_area.X0 + lcd_bg_area.XSize) ? width : (lcd_bg_area.X0 + lcd_bg_area.XSize - x0 - 1);
-    height = ((y0 + height) < lcd_bg_area.Y0 + lcd_bg_area.YSize) ? height : (lcd_bg_area.Y0 + lcd_bg_area.YSize - y0 - 1);
-    UTIL_LCD_DrawRect(x0, y0, width, height, colors[rois[i].class_index % NUMBER_COLORS]);
-    UTIL_LCDEx_PrintfAt(x0, y0, LEFT_MODE, classes_table[rois[i].class_index]);
-    UTIL_LCDEx_PrintfAt(-x0-width, y0, RIGHT_MODE, "%.0f%%", rois[i].conf*100.0f);
+    /* -----------------------------------------------------------------------
+     * Use YOLO center point to position the box, but use FIXED_BOX_W/H
+     * so the rectangle never changes size regardless of detection size.
+     * ----------------------------------------------------------------------- */
+
+    /* Convert normalized center (0..1) to screen pixels */
+    int32_t center_x_px = (int32_t)(rois[i].x_center * (float32_t)lcd_bg_area.XSize)
+                           + (int32_t)lcd_bg_area.X0;
+    int32_t center_y_px = (int32_t)(rois[i].y_center * (float32_t)lcd_bg_area.YSize)
+                           + (int32_t)lcd_bg_area.Y0;
+
+    /* Compute top-left corner from center and fixed size */
+    int32_t x0 = center_x_px - (int32_t)(FIXED_BOX_W / 2);
+    int32_t y0 = center_y_px - (int32_t)(FIXED_BOX_H / 2);
+
+    /* Clamp so the box never goes outside the screen */
+    if (x0 < 0) x0 = 0;
+    if (y0 < 0) y0 = 0;
+    if (x0 + (int32_t)FIXED_BOX_W > (int32_t)SCREEN_WIDTH)
+      x0 = (int32_t)SCREEN_WIDTH - (int32_t)FIXED_BOX_W;
+    if (y0 + (int32_t)FIXED_BOX_H > (int32_t)SCREEN_HEIGHT)
+      y0 = (int32_t)SCREEN_HEIGHT - (int32_t)FIXED_BOX_H;
+
+    /* Draw fixed-size rectangle centered on the detected person */
+    DrawThickRect((uint32_t)x0, (uint32_t)y0,
+                   FIXED_BOX_W, FIXED_BOX_H,
+                   UTIL_LCD_COLOR_RED, ZONE_BORDER_THICK);
+
+    /* Draw dot at the exact detection center */
+    DrawFilledCircle((uint32_t)center_x_px, (uint32_t)center_y_px,
+                      DOT_RADIUS, DOT_COLOR);
+
+    person_found = 1;
   }
 
+  /* HUD text */
   UTIL_LCD_SetBackColor(0x40000000);
-  UTIL_LCDEx_PrintfAt(0, LINE(2), CENTER_MODE, "Objects %u", nb_rois);
+  UTIL_LCDEx_PrintfAt(0, LINE(2), CENTER_MODE,
+                       person_found ? "PERSON DETECTED" : "               ");
   UTIL_LCDEx_PrintfAt(0, LINE(20), CENTER_MODE, "Inference: %ums", inference_ms);
   UTIL_LCD_SetBackColor(0);
 
@@ -505,7 +597,7 @@ static void LCD_init(void)
   LayerConfig.X1 = lcd_fg_area.X0 + lcd_fg_area.XSize;
   LayerConfig.Y1 = lcd_fg_area.Y0 + lcd_fg_area.YSize;
   LayerConfig.PixelFormat = LCD_PIXEL_FORMAT_ARGB4444;
-  LayerConfig.Address = (uint32_t) lcd_fg_buffer; /* External XSPI1 PSRAM */
+  LayerConfig.Address = (uint32_t) lcd_fg_buffer;
 
   BSP_LCD_ConfigLayer(0, LTDC_LAYER_2, &LayerConfig);
   UTIL_LCD_SetFuncDriver(&LCD_Driver);
@@ -516,7 +608,7 @@ static void LCD_init(void)
 }
 
 /**
- * @brief Displays a Welcome screen
+ * @brief Displays a Welcome screen for the first 4 seconds
  */
 static void Display_WelcomeScreen(void)
 {
@@ -666,7 +758,7 @@ static void SystemClock_Config(void)
   RCC_PeriphCLKInitStruct.PeriphClockSelection |= RCC_PERIPHCLK_XSPI1;
   RCC_PeriphCLKInitStruct.Xspi1ClockSelection = RCC_XSPI1CLKSOURCE_HCLK;
 
-  /* XSPI2 kernel clock (ck_ker_xspi1) = HCLK =  200MHz */
+  /* XSPI2 kernel clock (ck_ker_xspi2) = HCLK = 200MHz */
   RCC_PeriphCLKInitStruct.PeriphClockSelection |= RCC_PERIPHCLK_XSPI2;
   RCC_PeriphCLKInitStruct.Xspi2ClockSelection = RCC_XSPI2CLKSOURCE_HCLK;
 
@@ -676,14 +768,14 @@ static void SystemClock_Config(void)
   }
 }
 
-static void CONSOLE_Config()
+static void CONSOLE_Config(void)
 {
   GPIO_InitTypeDef gpio_init;
 
   __HAL_RCC_USART1_CLK_ENABLE();
   __HAL_RCC_GPIOE_CLK_ENABLE();
 
- /* DISCO & NUCLEO USART1 (PE5/PE6) */
+  /* DISCO & NUCLEO USART1 (PE5/PE6) */
   gpio_init.Mode      = GPIO_MODE_AF_PP;
   gpio_init.Pull      = GPIO_PULLUP;
   gpio_init.Speed     = GPIO_SPEED_FREQ_HIGH;
@@ -735,7 +827,6 @@ void npu_cache_disable_clocks_and_reset(void)
 }
 
 #ifdef  USE_FULL_ASSERT
-
 /**
   * @brief  Reports the name of the source file and the source line number
   *         where the assert_param error has occurred.
@@ -752,5 +843,4 @@ void assert_failed(uint8_t* file, uint32_t line)
   {
   }
 }
-
 #endif

@@ -1,7 +1,7 @@
 Middlewares/stm32-mw-camera/sensors/cmw_vd55g1.o: \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/sensors/cmw_vd55g1.c \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/sensors/cmw_vd55g1.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/sensors/cmw_sensors_if.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/sensors/cmw_vd55g1.c \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/sensors/cmw_vd55g1.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/sensors/cmw_sensors_if.h \
  ../../../../Middlewares/stm32-mw-camera/ISP_Library/isp/Inc/isp_core.h \
  ../../Inc/isp_conf.h \
  ../../../../Middlewares/stm32-mw-camera/ISP_Library/isp/Inc/isp_platform.h \
@@ -54,8 +54,8 @@ Middlewares/stm32-mw-camera/sensors/cmw_vd55g1.o: \
  ../../../../STM32Cube_FW_N6/Drivers/BSP/STM32N6570-DK/stm32n6570_discovery_errno.h \
  ../../../../Middlewares/stm32-mw-camera/sensors/cmw_sensors_if.h \
  ../../../../Middlewares/stm32-mw-camera/cmw_io.h
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/sensors/cmw_vd55g1.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/sensors/cmw_sensors_if.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/sensors/cmw_vd55g1.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/sensors/cmw_sensors_if.h:
 ../../../../Middlewares/stm32-mw-camera/ISP_Library/isp/Inc/isp_core.h:
 ../../Inc/isp_conf.h:
 ../../../../Middlewares/stm32-mw-camera/ISP_Library/isp/Inc/isp_platform.h:

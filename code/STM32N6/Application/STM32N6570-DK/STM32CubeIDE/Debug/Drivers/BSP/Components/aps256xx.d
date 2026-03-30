@@ -1,6 +1,6 @@
 Drivers/BSP/Components/aps256xx.o: \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/STM32Cube_FW_N6/Drivers/BSP/Components/aps256xx/aps256xx.c \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/STM32Cube_FW_N6/Drivers/BSP/Components/aps256xx/aps256xx.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/STM32Cube_FW_N6/Drivers/BSP/Components/aps256xx/aps256xx.c \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/STM32Cube_FW_N6/Drivers/BSP/Components/aps256xx/aps256xx.h \
  ../../Inc/aps256xx_conf.h \
  ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h \
  ../../Inc/stm32n6xx_hal_conf.h \
@@ -41,7 +41,7 @@ Drivers/BSP/Components/aps256xx.o: \
  ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h \
  ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_xspi.h \
  ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_cacheaxi.h
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/STM32Cube_FW_N6/Drivers/BSP/Components/aps256xx/aps256xx.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/STM32Cube_FW_N6/Drivers/BSP/Components/aps256xx/aps256xx.h:
 ../../Inc/aps256xx_conf.h:
 ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h:
 ../../Inc/stm32n6xx_hal_conf.h:

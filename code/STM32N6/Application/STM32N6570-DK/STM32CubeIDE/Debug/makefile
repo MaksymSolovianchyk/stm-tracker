@@ -74,8 +74,8 @@ all: main-build
 main-build: STM32N6570-DK_GettingStarted_ObjectDetection.elf secondary-outputs
 
 # Tool invocations
-STM32N6570-DK_GettingStarted_ObjectDetection.elf STM32N6570-DK_GettingStarted_ObjectDetection.map: $(OBJS) $(USER_OBJS) /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Application/STM32N6570-DK/STM32CubeIDE/STM32N657xx.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "STM32N6570-DK_GettingStarted_ObjectDetection.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m55 -T"/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Application/STM32N6570-DK/STM32CubeIDE/STM32N657xx.ld" --specs=nosys.specs -Wl,-Map="STM32N6570-DK_GettingStarted_ObjectDetection.map" -Wl,--gc-sections -static -Wl,--cmse-implib -Wl,--out-implib=./secure_nsclib.o -L../../../../Middlewares/stedgeai-lib/Lib/GCC/ARMCortexM55 -Wl,--no-warn-rwx-segments --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+STM32N6570-DK_GettingStarted_ObjectDetection.elf STM32N6570-DK_GettingStarted_ObjectDetection.map: $(OBJS) $(USER_OBJS) /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Application/STM32N6570-DK/STM32CubeIDE/STM32N657xx.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "STM32N6570-DK_GettingStarted_ObjectDetection.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m55 -T"/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Application/STM32N6570-DK/STM32CubeIDE/STM32N657xx.ld" --specs=nosys.specs -Wl,-Map="STM32N6570-DK_GettingStarted_ObjectDetection.map" -Wl,--gc-sections -static -Wl,--cmse-implib -Wl,--out-implib=./secure_nsclib.o -L../../../../Middlewares/stedgeai-lib/Lib/GCC/ARMCortexM55 -Wl,--no-warn-rwx-segments --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

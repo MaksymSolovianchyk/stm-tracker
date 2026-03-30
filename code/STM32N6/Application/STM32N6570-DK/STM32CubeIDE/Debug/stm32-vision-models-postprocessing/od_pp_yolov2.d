@@ -1,5 +1,5 @@
 stm32-vision-models-postprocessing/od_pp_yolov2.o: \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Src/od_pp_yolov2.c \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Src/od_pp_yolov2.c \
  ../../../../Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Inc/od_pp_loc.h \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/DSP/Include/arm_math.h \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/DSP/Include/arm_math_types.h \
@@ -36,7 +36,7 @@ stm32-vision-models-postprocessing/od_pp_yolov2.o: \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/DSP/Include/dsp/window_functions.h \
  ../../../../Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Inc/od_yolov2_pp_if.h \
  ../../../../Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Inc/od_pp_output_if.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Src/vision_models_pp.h
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Src/vision_models_pp.h
 ../../../../Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Inc/od_pp_loc.h:
 ../../../../STM32Cube_FW_N6/Drivers/CMSIS/DSP/Include/arm_math.h:
 ../../../../STM32Cube_FW_N6/Drivers/CMSIS/DSP/Include/arm_math_types.h:
@@ -73,4 +73,4 @@ stm32-vision-models-postprocessing/od_pp_yolov2.o: \
 ../../../../STM32Cube_FW_N6/Drivers/CMSIS/DSP/Include/dsp/window_functions.h:
 ../../../../Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Inc/od_yolov2_pp_if.h:
 ../../../../Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Inc/od_pp_output_if.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Src/vision_models_pp.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Src/vision_models_pp.h:

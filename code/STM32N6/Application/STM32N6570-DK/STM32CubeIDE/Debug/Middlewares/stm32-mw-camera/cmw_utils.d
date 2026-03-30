@@ -1,6 +1,6 @@
 Middlewares/stm32-mw-camera/cmw_utils.o: \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_utils.c \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_utils.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_utils.c \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_utils.h \
  ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h \
  ../../Inc/stm32n6xx_hal_conf.h \
  ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_rcc.h \
@@ -40,8 +40,8 @@ Middlewares/stm32-mw-camera/cmw_utils.o: \
  ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h \
  ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_xspi.h \
  ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_cacheaxi.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_camera.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_errno.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_camera.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_errno.h \
  ../../Inc/cmw_camera_conf.h \
  ../../../../STM32Cube_FW_N6/Drivers/BSP/STM32N6570-DK/stm32n6570_discovery_bus.h \
  ../../Inc/stm32n6570_discovery_conf.h \
@@ -50,7 +50,7 @@ Middlewares/stm32-mw-camera/cmw_utils.o: \
  ../../../../Middlewares/stm32-mw-camera/ISP_Library/isp/Inc/isp_core.h \
  ../../Inc/isp_conf.h \
  ../../../../Middlewares/stm32-mw-camera/ISP_Library/isp/Inc/isp_platform.h
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_utils.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_utils.h:
 ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal.h:
 ../../Inc/stm32n6xx_hal_conf.h:
 ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_rcc.h:
@@ -90,8 +90,8 @@ Middlewares/stm32-mw-camera/cmw_utils.o: \
 ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_uart_ex.h:
 ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_xspi.h:
 ../../../../STM32Cube_FW_N6/Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_hal_cacheaxi.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_camera.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-mw-camera/cmw_errno.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_camera.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-mw-camera/cmw_errno.h:
 ../../Inc/cmw_camera_conf.h:
 ../../../../STM32Cube_FW_N6/Drivers/BSP/STM32N6570-DK/stm32n6570_discovery_bus.h:
 ../../Inc/stm32n6570_discovery_conf.h:

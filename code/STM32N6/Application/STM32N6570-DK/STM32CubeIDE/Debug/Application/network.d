@@ -1,5 +1,5 @@
 Application/network.o: \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Model/STM32N6570-DK/network.c \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Model/STM32N6570-DK/network.c \
  ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_NN_interface.h \
  ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_config.h \
  ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_attributes.h \
@@ -36,7 +36,7 @@ Application/network.o: \
  ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ecloader.h \
  ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ec.h \
  ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_cipher.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Model/STM32N6570-DK/network_ecblobs.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Model/STM32N6570-DK/network_ecblobs.h \
  ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_caches_interface.h
 ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_NN_interface.h:
 ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_config.h:
@@ -74,5 +74,5 @@ Application/network.o: \
 ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ecloader.h:
 ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ec.h:
 ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_cipher.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Model/STM32N6570-DK/network_ecblobs.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Model/STM32N6570-DK/network_ecblobs.h:
 ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_caches_interface.h:

@@ -1,6 +1,6 @@
 Application/mcu_cache.o: \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/Devices/STM32N6xx/mcu_cache.c \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/Devices/STM32N6xx/mcu_cache.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/Devices/STM32N6xx/mcu_cache.c \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/Devices/STM32N6xx/mcu_cache.h \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/Device/ST/STM32N6xx/Include/stm32n6xx.h \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/Device/ST/STM32N6xx/Include/stm32n657xx.h \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/Include/core_cm55.h \
@@ -11,7 +11,7 @@ Application/mcu_cache.o: \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/Include/m-profile/armv8m_pmu.h \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/Include/m-profile/armv7m_cachel1.h \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/Device/ST/STM32N6xx/Include/system_stm32n6xx.h
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/Devices/STM32N6xx/mcu_cache.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/Devices/STM32N6xx/mcu_cache.h:
 ../../../../STM32Cube_FW_N6/Drivers/CMSIS/Device/ST/STM32N6xx/Include/stm32n6xx.h:
 ../../../../STM32Cube_FW_N6/Drivers/CMSIS/Device/ST/STM32N6xx/Include/stm32n657xx.h:
 ../../../../STM32Cube_FW_N6/Drivers/CMSIS/Include/core_cm55.h:

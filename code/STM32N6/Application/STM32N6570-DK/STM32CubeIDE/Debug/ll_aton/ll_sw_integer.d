@@ -1,9 +1,9 @@
 ll_aton/ll_sw_integer.o: \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_sw_integer.c \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_config.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_sw.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_sw_float.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_sw_integer.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_sw_integer.c \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_config.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_sw.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_sw_float.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_sw_integer.h \
  ../../../../Middlewares/stedgeai-lib/Inc/ai_datatypes_internal.h \
  ../../../../Middlewares/stedgeai-lib/Inc/ai_datatypes.h \
  ../../../../Middlewares/stedgeai-lib/Inc/ai_platform.h \
@@ -66,11 +66,11 @@ ll_aton/ll_sw_integer.o: \
  ../../../../Middlewares/stedgeai-lib/Inc/layers_loss_softmax_crossentropy_grad.h \
  ../../../../Middlewares/stedgeai-lib/Inc/layers_in_place_accumulator.h \
  ../../../../Middlewares/stedgeai-lib/Inc/layers_relu_grad.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_util.h
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_config.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_sw.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_sw_float.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_sw_integer.h:
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_util.h
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_config.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_sw.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_sw_float.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_sw_integer.h:
 ../../../../Middlewares/stedgeai-lib/Inc/ai_datatypes_internal.h:
 ../../../../Middlewares/stedgeai-lib/Inc/ai_datatypes.h:
 ../../../../Middlewares/stedgeai-lib/Inc/ai_platform.h:
@@ -133,4 +133,4 @@ ll_aton/ll_sw_integer.o: \
 ../../../../Middlewares/stedgeai-lib/Inc/layers_loss_softmax_crossentropy_grad.h:
 ../../../../Middlewares/stedgeai-lib/Inc/layers_in_place_accumulator.h:
 ../../../../Middlewares/stedgeai-lib/Inc/layers_relu_grad.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_util.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_util.h:

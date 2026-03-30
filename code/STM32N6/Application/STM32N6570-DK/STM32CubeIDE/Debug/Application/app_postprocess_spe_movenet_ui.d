@@ -1,6 +1,6 @@
 Application/app_postprocess_spe_movenet_ui.o: \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/ai-postprocessing-wrapper/app_postprocess_spe_movenet_ui.c \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/ai-postprocessing-wrapper/app_postprocess.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/ai-postprocessing-wrapper/app_postprocess_spe_movenet_ui.c \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/ai-postprocessing-wrapper/app_postprocess.h \
  ../../../../Middlewares/stedgeai-lib/Inc/stai.h \
  ../../../../Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Inc/od_yolov2_pp_if.h \
  ../../../../Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Inc/od_pp_output_if.h \
@@ -65,7 +65,7 @@ Application/app_postprocess_spe_movenet_ui.o: \
  ../../../../Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Inc/fd_yunet_pp_if.h \
  ../../../../Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Inc/fd_pp_output_if.h \
  ../../Inc/app_config.h
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/ai-postprocessing-wrapper/app_postprocess.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/ai-postprocessing-wrapper/app_postprocess.h:
 ../../../../Middlewares/stedgeai-lib/Inc/stai.h:
 ../../../../Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Inc/od_yolov2_pp_if.h:
 ../../../../Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Inc/od_pp_output_if.h:

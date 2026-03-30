@@ -1,6 +1,6 @@
 stm32-vision-models-postprocessing/vision_models_pp_maxi_if32.o: \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Src/vision_models_pp_maxi_if32.c \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Src/vision_models_pp.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Src/vision_models_pp_maxi_if32.c \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Src/vision_models_pp.h \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/DSP/Include/arm_math.h \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/DSP/Include/arm_math_types.h \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/Include/cmsis_compiler.h \
@@ -34,7 +34,7 @@ stm32-vision-models-postprocessing/vision_models_pp_maxi_if32.o: \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/DSP/Include/dsp/support_functions.h \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/DSP/Include/dsp/quaternion_math_functions.h \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/DSP/Include/dsp/window_functions.h
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Src/vision_models_pp.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stm32-vision-models-postprocessing/lib_vision_models_pp/Src/vision_models_pp.h:
 ../../../../STM32Cube_FW_N6/Drivers/CMSIS/DSP/Include/arm_math.h:
 ../../../../STM32Cube_FW_N6/Drivers/CMSIS/DSP/Include/arm_math_types.h:
 ../../../../STM32Cube_FW_N6/Drivers/CMSIS/Include/cmsis_compiler.h:

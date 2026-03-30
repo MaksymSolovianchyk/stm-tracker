@@ -1,2 +1,2 @@
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/ai-postprocessing-wrapper/app_postprocess_od_yolov2_ui.c:27:9:app_postprocess_init	0	static
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/ai-postprocessing-wrapper/app_postprocess_od_yolov2_ui.c:48:9:app_postprocess_run	16	static
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/ai-postprocessing-wrapper/app_postprocess_od_yolov2_ui.c:27:9:app_postprocess_init	0	static
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/ai-postprocessing-wrapper/app_postprocess_od_yolov2_ui.c:48:9:app_postprocess_run	16	static

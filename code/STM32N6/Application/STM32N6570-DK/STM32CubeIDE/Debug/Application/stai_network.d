@@ -1,6 +1,6 @@
 Application/stai_network.o: \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Model/STM32N6570-DK/stai_network.c \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Model/STM32N6570-DK/stai_network.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Model/STM32N6570-DK/stai_network.c \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Model/STM32N6570-DK/stai_network.h \
  ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_config.h \
  ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_stai_internal.h \
  ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_rt_user_api.h \
@@ -35,7 +35,7 @@ Application/stai_network.o: \
  ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_rt_user_api.h \
  ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_util.h \
  ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_version.h
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Model/STM32N6570-DK/stai_network.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Model/STM32N6570-DK/stai_network.h:
 ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_config.h:
 ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_stai_internal.h:
 ../../../../Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_rt_user_api.h:

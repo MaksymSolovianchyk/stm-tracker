@@ -1,12 +1,12 @@
 ll_aton/ll_aton_lib_sw_operators.o: \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_lib_sw_operators.c \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_util.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_lib.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_attributes.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_config.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_osal.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_platform.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_lib_sw_operators.c \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_util.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_lib.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_attributes.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_config.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_osal.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_platform.h \
  ../../../../Middlewares/stedgeai-lib/Npu/Devices/STM32N6xx/mcu_cache.h \
  ../../../../Middlewares/stedgeai-lib/Npu/Devices/STM32N6xx/npu_cache.h \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/Device/ST/STM32N6xx/Include/stm32n6xx.h \
@@ -21,20 +21,20 @@ ll_aton/ll_aton_lib_sw_operators.o: \
  ../../../../STM32Cube_FW_N6/Drivers/CMSIS/Device/ST/STM32N6xx/Include/system_stm32n6xx.h \
  ../../../../Middlewares/stedgeai-lib/Npu/Devices/STM32N6xx/ATON.h \
  ../../../../Middlewares/stedgeai-lib/Npu/Devices/STM32N6xx/ATON-idxs.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_rcompat.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_NN_interface.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_cipher.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_caches_interface.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_lib_sw_operators.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_runtime.h \
- /Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_rt_user_api.h
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_util.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_lib.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_attributes.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_config.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_osal.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_platform.h:
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_rcompat.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_NN_interface.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_cipher.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_caches_interface.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_lib_sw_operators.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_runtime.h \
+ /Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_rt_user_api.h
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_util.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_lib.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_attributes.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_config.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_osal.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_platform.h:
 ../../../../Middlewares/stedgeai-lib/Npu/Devices/STM32N6xx/mcu_cache.h:
 ../../../../Middlewares/stedgeai-lib/Npu/Devices/STM32N6xx/npu_cache.h:
 ../../../../STM32Cube_FW_N6/Drivers/CMSIS/Device/ST/STM32N6xx/Include/stm32n6xx.h:
@@ -49,10 +49,10 @@ ll_aton/ll_aton_lib_sw_operators.o: \
 ../../../../STM32Cube_FW_N6/Drivers/CMSIS/Device/ST/STM32N6xx/Include/system_stm32n6xx.h:
 ../../../../Middlewares/stedgeai-lib/Npu/Devices/STM32N6xx/ATON.h:
 ../../../../Middlewares/stedgeai-lib/Npu/Devices/STM32N6xx/ATON-idxs.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_rcompat.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_NN_interface.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_cipher.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_caches_interface.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_lib_sw_operators.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_runtime.h:
-/Users/maksym.solovianchyk/Documents/Graduation_Internship/radar_ai_detector/stm32ai-modelzoo-services/application_code/object_detection/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_rt_user_api.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_rcompat.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_NN_interface.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_cipher.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_caches_interface.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_lib_sw_operators.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_runtime.h:
+/Users/maksym.solovianchyk/Documents/Skycomm/stm-tracker/code/STM32N6/Middlewares/stedgeai-lib/Npu/ll_aton/ll_aton_rt_user_api.h:
